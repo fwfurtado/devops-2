@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  database:
+    image: postgres
+    volumes:
+    - devops:/var/lib/postgresql/data
+  api:
+    image: devops-2
+    environment:
+      DATABASE_URL: "jdbc:postgresql://database/devops"
+      DATABASE_HOST: database
+      DATABASE_PORT: 5432
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    restart: on-failure
+
+volumes:
+  devops:
+    external:
+      name: devops-2

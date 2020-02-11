@@ -1,6 +1,6 @@
 FROM openjdk:8-jre-slim
 
-# RUN apt-get update && apt-get install -y wait-for-it netcat
+RUN apt-get update && apt-get install -y wait-for-it netcat
 
 ARG JAR='./build/libs/devops-0.0.1-SNAPSHOT.jar'
 
@@ -14,4 +14,6 @@ USER application
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "app.jar"]
+COPY docker-entrypoint.sh /usr/local/bin
+
+ENTRYPOINT ["docker-entrypoint.sh"]

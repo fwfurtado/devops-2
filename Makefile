@@ -10,4 +10,4 @@ build/package: build/test
 
 build/docker: build/package
 	$(info packaging application)
-	@ docker image build -t $(IMAGE_NAME)
+	@ docker image build -t $(IMAGE_NAME) .
