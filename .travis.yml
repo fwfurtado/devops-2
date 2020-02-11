@@ -1,0 +1,15 @@
+language: java
+
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: test
+      name: 'Testing application'
+      script:
+        - sh gradlew test
+    - stage: package
+      name: 'Packaging application'
+      script:
+        - sh gradlew build -x test
