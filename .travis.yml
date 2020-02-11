@@ -21,3 +21,13 @@ jobs:
       name: 'Dockerize our app'
       script:
         - make build/docker
+    - stage: deploy
+      if: branch == master
+      name: 'Deploy our app production'
+      script:
+        - make build/deploy/production
+    - stage: deploy
+      if: branch != master
+      name: 'Deploy our app to staging'
+      script:
+        - make build/deploy/production
