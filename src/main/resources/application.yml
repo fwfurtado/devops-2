@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost/devops
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
